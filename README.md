@@ -54,3 +54,21 @@ This project aims to architect and implement a cloud-based database system on Mi
 ### 6. Validating Migration Success
 - Conducted a comprehensive validation to ensure the success of the database migration process.
 - Inspected the migrated database's data, schema, and configurations to confirm adherence to principles of data integrity and successful execution of the migration.
+
+
+## Milestone 4
+### 1. Backup the On-Premise Database
+- Generated a full backup of the production database hosted on the Windows VM. This backup essentially duplicates the database, providing a safety net in the event of unforeseen issues.
+- Once the backup is complete, stored the resultant backup file in a designated location on the vm or local machine for easy access and redundancy.
+
+### 2. Upload Backup to Blob Storage
+- Configured an Azure Blob Storage account, which serves as a secure online repository for your database backups.
+- Next, uploaded the previously created database backup file to the Blob Storage container. This step provides an extra layer of backup protection through the presence of a redundant copy stored remotely.
+
+### 3. Restore Database on Development Environment
+- To replicate a development environment, provisioned a new Windows VM that mirrored the development setup. Installed SQL Server on this VM to mimic the database infrastructure.
+- Subsequently, proceeded to restore the database backup onto this new "sandbox" environment. This allows us to safely explore and experiment with new concepts, while the main production data remains unaffected.
+
+### 4. Automate Backups for Development Database
+- On the development Windows VM, utilized SSMS to establish a Management Task that automates regular backups of your development database.
+- Configured a weekly backup schedule to ensure consistent protection for the evolving work and simplify recovery for the development environment if needed.
