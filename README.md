@@ -101,10 +101,10 @@ This project aims to architect and implement a cloud-based database system on Mi
 
 ### 1: Setting up Geo-Replication
 **Configure Geo-Replication:**
-   - Begin by setting up geo-replication for your production Azure SQL Database.
+   - Begin by setting up geo-replication for the production Azure SQL Database.
    - Access the Azure portal and navigate to the Azure SQL Database service.
-   - Select your primary database and locate the option to configure geo-replication.
-   - Follow the prompts to create a synchronized replica of your primary database on a separate SQL server located in a different geographical region from your primary database server.
+   - Select the primary database and locate the option to configure geo-replication.
+   - Follow the prompts to create a synchronized replica of the primary database on a separate SQL server located in a different geographical region from your primary database server.
 
 **Geographical Separation Importance:**
    - Understand that geographical separation is crucial as it bolsters redundancy and resilience, minimizing shared risks.
@@ -122,3 +122,33 @@ This project aims to architect and implement a cloud-based database system on Mi
    - Access the Azure portal and navigate to the Azure SQL Database service.
    - Initiate the failback process to transition operations back to the primary database.
    - Monitor the failback process closely to ensure a seamless transition and to demonstrate the cyclical nature of your failover strategy.
+
+## Milestone 7
+
+### 1: Enabling Microsoft Entra ID Authentication
+**Configure Microsoft Entra ID Authentication:**
+   - Begin by enabling Microsoft Entra ID authentication for the SQL Server that hosts your Azure SQL production database.
+   - Access the Azure portal and navigate to the Azure SQL Database service.
+   - Choose the SQL Server hosting your production database and locate the option to configure authentication settings.
+   - Integrate Microsoft Entra ID as a trusted identity provider, allowing users to authenticate using their Microsoft Entra credentials.
+
+**Assign Microsoft Entra Admin:**
+   - Subsequently, choose a Microsoft Entra admin who holds privileged permissions within the Azure SQL Database environment.
+   - This admin will have authority over user management and access control.
+   - Ensure that the chosen admin has sufficient permissions to manage users and roles within the Azure SQL Database environment.
+   - Verify that you can establish a connection to the production database using Microsoft Entra credentials within Azure Data Studio.
+
+### 2: Creating and Assigning Database User
+**Generate DB Reader User in Microsoft Entra ID:**
+   - Begin by generating a new user account in Microsoft Entra ID, which will serve as your DB Reader user.
+   - Ensure that the user account is created with appropriate permissions and follows organizational policies regarding access control.
+
+**Assign db_datareader Role:**
+   - In Azure Data Studio, ensure that you're connected to the production database using the Microsoft Entra admin credentials.
+   - Proceed to assign the db_datareader role to the previously created DB Reader User.
+   - This role provides the user with read-only privileges to the production database.
+
+**Testing Permissions:**
+   - Reconnect to the production database using Azure Data Studio and the credentials of the new DB Reader AD user.
+   - Test out the permissions of the user to ensure the correct role has been assigned to this user.
+   - Verify that the DB Reader user can access the database and perform read-only operations as expected.
