@@ -96,3 +96,29 @@ This project aims to architect and implement a cloud-based database system on Mi
 **Cleanup:**
    - Once the production database has been successfully restored from a backup, delete the database that suffered data loss in the Azure portal.
    - Ensure that the cleanup process is carried out accurately to avoid any unintended consequences.
+
+## Milestone 6
+
+### 1: Setting up Geo-Replication
+**Configure Geo-Replication:**
+   - Begin by setting up geo-replication for your production Azure SQL Database.
+   - Access the Azure portal and navigate to the Azure SQL Database service.
+   - Select your primary database and locate the option to configure geo-replication.
+   - Follow the prompts to create a synchronized replica of your primary database on a separate SQL server located in a different geographical region from your primary database server.
+
+**Geographical Separation Importance:**
+   - Understand that geographical separation is crucial as it bolsters redundancy and resilience, minimizing shared risks.
+   - Choose a secondary region strategically to ensure optimal disaster recovery capabilities and compliance with regulatory requirements.
+
+### 2: Orchestrating a Planned Failover
+**Simulate Real-World Challenges:**
+   - Orchestrate a planned failover to the secondary region to simulate real-world challenges.
+   - Access the Azure portal and navigate to the Azure SQL Database service.
+   - Initiate the failover process, which transitions operations to the secondary copy.
+   - Monitor the failover process closely to evaluate the availability and data consistency of the failover database.
+
+**Failback Process:**
+   - After evaluating the failover database's availability and data consistency, perform a failback to the primary region.
+   - Access the Azure portal and navigate to the Azure SQL Database service.
+   - Initiate the failback process to transition operations back to the primary database.
+   - Monitor the failback process closely to ensure a seamless transition and to demonstrate the cyclical nature of your failover strategy.
